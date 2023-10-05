@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+tr:nth-child(odd)   { background-color:#eee; }
+tr:nth-child(even)    { background-color:#fff; }
+th {
+  background-color: #057938;
+  color: #fff;
+  padding: 10px;
+}
+td {
+  padding: 10px;
+}
+table {
+  border-radius: 20px;
+}
+table.min-w-full {
+  width: -webkit-fill-available;
+}
+
+/* pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-list {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+}
+
+.pagination-item {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pagination-item:hover {
+  background-color: #f0f0f0;
+}
+
+.active {
+  background-color: #057938;
+  color: #fff;
+}
+
+.pagination-previous,
+.pagination-next {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pagination-previous:hover,
+.pagination-next:hover {
+  background-color: #f0f0f0;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Add this CSS to your stylesheets or use Tailwind CSS classes */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+  position: relative;
+  z-index: 1001;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.shrink-1.mb-12.grow-0.basis-auto.md\:mb-0.md\:w-9\/12.md\:shrink-0.lg\:w-6\/12.xl\:w-6\/12 {
+  text-align: -webkit-center;
+}
