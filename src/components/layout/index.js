@@ -20,14 +20,14 @@ const Layout = ({ children }) => {
         console.log("result===========>", result);
         if (!result.status) {
           setUser(false);
-          router.push('auth/login');
+          router.push('/auth/login');
         } else {
           setUser(true);
         }
       })
       .catch((error) => {
         setUser(false);
-       router.push('auth/login');
+       router.push('/auth/login');
       });
   }
 
