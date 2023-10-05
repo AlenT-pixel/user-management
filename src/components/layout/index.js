@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './header';
 import Content from './content';
 import { useRouter } from 'next/navigation';
+import { BASE_API_URL } from '@/confis';
 
 const Layout = ({ children }) => {
   const [user, setUser] = useState(false);
@@ -11,7 +12,7 @@ const Layout = ({ children }) => {
 
   const verifyToken = () => {
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://68.178.173.131:5001/api/verify`,{
+    fetch(`${BASE_API_URL}/api/verify`,{
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     })

@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_API_URL } from "@/confis";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -28,7 +29,7 @@ export default function Page() {
         values.append("username", formData.username);
         values.append("password", formData.password);
     if (Object.keys(validationErrors).length === 0) {
-      const res = await fetch(`http://68.178.173.131:5001/api/login/`, {
+      const res = await fetch(`${BASE_API_URL}/api/login/`, {
         method: 'POST',
         body: values,
       })

@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_API_URL } from '@/confis';
 import CustomModal from '@/custom-components/modal';
 import TableWithPagination from '@/custom-components/tablewithpagination';
 import { useDisclosure } from '@nextui-org/react';
@@ -35,7 +36,7 @@ const User = () => {
 
   const fetchUser = () => {
     setLoading(true);
-    fetch(`http://68.178.173.131:5001/api/user?page=${page}&&count=${count}`)
+    fetch(`${BASE_API_URL}/api/user?page=${page}&&count=${count}`)
       .then((response) => response.json())
       .then((result) => {
         const { data, count } = result;

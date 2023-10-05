@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import CustomModal from './modal';
 import { useDisclosure } from '@nextui-org/react';
+import { BASE_API_URL } from '@/confis';
 
 const TableWithPagination = ({ data, handlePagination, totalCount, count, fetchData, loading }) => {
     const itemsPerPage = count; // Number of items per page
@@ -30,7 +31,7 @@ const TableWithPagination = ({ data, handlePagination, totalCount, count, fetchD
     const deleteUser = async (id) => {
         const token = JSON.parse(localStorage.getItem("token"));
         try {
-            const res = await fetch(`http://68.178.173.131:5001/api/user/${id}`, {
+            const res = await fetch(`${BASE_API_URL}/api/user/${id}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}` },
             })
