@@ -35,7 +35,7 @@ const User = () => {
 
   const fetchUser = () => {
     setLoading(true);
-    fetch(`http://localhost:5001/api/user?page=${page}&&count=${count}`)
+    fetch(`http://68.178.173.131:5001/api/user?page=${page}&&count=${count}`)
       .then((response) => response.json())
       .then((result) => {
         const { data, count } = result;

@@ -37,7 +37,7 @@ const CustomModal = ({ isOpen, onOpenChange, editData, fetchData }) => {
         values.append("email", formData.email);
         values.append("password", formData.password);
         if (Object.keys(validationErrors).length === 0) {
-            const res = await fetch(`http://localhost:5001/api/user/${editData ? editData.id:''}`, {
+            const res = await fetch(`http://68.178.173.131:5001/api/user/${editData ? editData.id:''}`, {
                 method: editData ? 'PUT' : 'POST',
                 headers: { Authorization: `Bearer ${token}` },
                 body: values,

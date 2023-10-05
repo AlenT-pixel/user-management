@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
 
   const verifyToken = () => {
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:5001/api/verify`,{
+    fetch(`http://68.178.173.131:5001/api/verify`,{
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     })

@@ -30,7 +30,7 @@ export default function Page() {
         values.append("email", formData.email);
         values.append("password", formData.password);
         if (Object.keys(validationErrors).length === 0) {
-            const res = await fetch(`http://localhost:5001/api/user/`, {
+            const res = await fetch(`http://68.178.173.131:5001/api/user/`, {
                 method: 'POST',
                 body: values,
             })

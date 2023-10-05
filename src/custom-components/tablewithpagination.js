@@ -30,7 +30,7 @@ const TableWithPagination = ({ data, handlePagination, totalCount, count, fetchD
     const deleteUser = async (id) => {
         const token = JSON.parse(localStorage.getItem("token"));
         try {
-            const res = await fetch(`http://localhost:5001/api/user/${id}`, {
+            const res = await fetch(`http://68.178.173.131:5001/api/user/${id}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}` },
             })
