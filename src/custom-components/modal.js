@@ -10,14 +10,24 @@ const CustomModal = ({ isOpen, onOpenChange, editData, fetchData }) => {
         username: '',
         email: '',
         password: '',
+        role: 'user'
     });
     const [errors, setErrors] = useState({});
     const [message, setMessage] = useState('')
 
+    const closeModal = (close) => {
+        formData.username = '';
+        formData.email = '';
+        formData.password = '';
+        formData.role = 'user'
+        close();
+    }
+
     useEffect(() => {
         formData.username = editData?.username;
         formData.email = editData?.email;
-        formData.password = ''
+        formData.password = '';
+        formData.role = editData?.role;
     }, [editData])
 
     const handleChange = (e) => {
@@ -37,8 +47,9 @@ const CustomModal = ({ isOpen, onOpenChange, editData, fetchData }) => {
         values.append("username", formData.username);
         values.append("email", formData.email);
         values.append("password", formData.password);
+        values.append("role", formData.role);
         if (Object.keys(validationErrors).length === 0) {
-            const res = await fetch(`${BASE_API_URL}/api/user/${editData ? editData.id:''}`, {
+            const res = await fetch(`${BASE_API_URL}/api/user/${editData ? editData.id : ''}`, {
                 method: editData ? 'PUT' : 'POST',
                 headers: { Authorization: `Bearer ${token}` },
                 body: values,
@@ -49,6 +60,10 @@ const CustomModal = ({ isOpen, onOpenChange, editData, fetchData }) => {
             if (status === true) {
                 close();
                 fetchData();
+                formData.username = '';
+                formData.email = '';
+                formData.password = '';
+                formData.role = 'user'
             } else { setMessage(message) }
         } else {
             setErrors(validationErrors);
@@ -113,6 +128,13 @@ const CustomModal = ({ isOpen, onOpenChange, editData, fetchData }) => {
                                         {errors.email && <p className="text-red-500">{errors.email}</p>}
                                     </div>
 
+                                    <div className="relative mb-6">
+                                        <select name='role' value={formData.role} onChange={handleChange} className="peer block min-h-[auto] rounded border-1 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-dark-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
+                                            <option value={'admin'}>Admin</option>
+                                            <option value={'user'}>User</option>
+                                        </select>
+                                    </div>
+
                                     <div className="relative mb-6" data-te-input-wrapper-init>
                                         <label>Password</label>
                                         <input
@@ -130,7 +152,7 @@ const CustomModal = ({ isOpen, onOpenChange, editData, fetchData }) => {
                             <div><p className='text-red-500'>{message}</p></div>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="danger" variant="light" onClick={onClose}>
+                            <Button color="danger" variant="light" onClick={() => { closeModal(onClose) }}>
                                 Close
                             </Button>
                             <Button color="primary" onClick={(e) => handleSubmit(e, onClose)}>

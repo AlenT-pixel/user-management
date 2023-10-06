@@ -37,8 +37,8 @@ const Layout = ({ children }) => {
   })
 
   if (!user || user === false) {
-    return <div class="min-h-screen flex items-center justify-center">
-      <p class="text-2xl font-bold">loading...</p>
+    return <div className="min-h-screen flex items-center justify-center">
+      <p className="text-2xl font-bold">loading...</p>
     </div>
   }
 
