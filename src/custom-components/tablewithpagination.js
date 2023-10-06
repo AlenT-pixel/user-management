@@ -49,7 +49,7 @@ const TableWithPagination = ({ data, handlePagination, totalCount, count, fetchD
     }
 
     return (
-        <div>
+        <div  className="overflow-x-auto">
             <table className="min-w-full">
                 <thead>
                     <tr>
